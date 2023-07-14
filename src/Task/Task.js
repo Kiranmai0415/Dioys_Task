@@ -59,9 +59,10 @@ const Users = () => {
                 data[i].style.display = "none";
             }
         }
+        
         setUserslist({...userslist, [e.target.value]:e.target.name, data:data})
     }
-    
+
     return (
 
 

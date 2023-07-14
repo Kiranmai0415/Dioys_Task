@@ -6,6 +6,7 @@ function EditUser() {
     const [edit, setEdit] = useState({
         data:[]
     });
+    
     const formRef =useRef(null);
     const handleSubmit=(e)=>{
         console.log("edited");
