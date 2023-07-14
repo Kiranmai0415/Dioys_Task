@@ -213,7 +213,6 @@ const TableData = () => {
                                 name="first_name"
                                 placeholder="First name"
                                 value={addmodal.first_name} onChange={handleInputChange}
-
                             />
                             <Form.Control.Feedback type="invalid">
                                 this filed is required*
