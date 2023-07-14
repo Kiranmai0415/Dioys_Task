@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Button, Table, Modal, Form, Col, Row, InputGroup } from "react-bootstrap";
 import Search from "./Search";
 
-
 const TableData = () => {
 
     const [usersdata, setUsersdata] = useState(
