@@ -23,7 +23,6 @@ function EditUser() {
     const Userslist = edit.data.filter((each) => each.id === user.id)
     console.log("filterUserslist=>", Userslist)
     alert("are you sure")
-    // setEditMo(null);
     formRef.current.reset();
   };
 

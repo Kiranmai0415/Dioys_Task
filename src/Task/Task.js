@@ -67,7 +67,7 @@ const Users = () => {
         <div className="mt-5">
             <AddUser/>
             <label>Search</label>
-            <input type="text" name="Search" value={data.Search} onChange={handleSearch}></input>
+            <input type="text" name="Search" value={userslist.Search} onChange={handleSearch}></input>
             
             <Table striped bordered hover className="table">
                 <thead>

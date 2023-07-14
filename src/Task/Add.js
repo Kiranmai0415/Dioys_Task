@@ -19,7 +19,6 @@ function AddUser() {
     let data = userslist.data;
     const handleAdd = () => {
         console.log("Add in table");
-        // const userslist=data.push(modal);
         var loop=''
         var i;;
         var arr = data.length+1

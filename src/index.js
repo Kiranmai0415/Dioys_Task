@@ -8,7 +8,7 @@ import Routing from './Routing/routing';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Routing />
+    <Routing/>
   </React.StrictMode>
 );
 
