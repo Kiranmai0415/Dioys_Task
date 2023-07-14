@@ -1,14 +1,12 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Task from '../Task/Task';
-import TableData from '../Task/Complete_Task';
+import TableData from '../Task/Task';
 
 function Routing() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/task" element={<Task />} />
-                <Route path="/table" element={<TableData />} />
+                <Route path="/task" element={<TableData />} />
             </Routes>
         </BrowserRouter>
     );

@@ -268,7 +268,6 @@ const TableData = () => {
                     </Row>
                 </Form>
 
-
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
