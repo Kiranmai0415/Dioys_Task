@@ -18,8 +18,6 @@ function EditUser() {
     setEdit(id);
   };
 
-  
-
   const handleSave = (user, id) => {
  
     const Userslist = edit.data.filter((each) => each.id === user.id)

@@ -9,6 +9,7 @@ function AddUser() {
             text:''
         }
     )
+    
     const formRef = useRef(null);
     const [modal, setModal] = useState({
         first_name: ' ',
