@@ -54,6 +54,7 @@ const EditUser = () => {
           }
           return item;
         });
+        alert("are you sure you want to edit the details")
         console.log("item",editedData); 
         setUser({ ...user, data: editedData });
         handleClose();

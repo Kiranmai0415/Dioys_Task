@@ -46,6 +46,7 @@ const Add = () => {
     const handleSave = () => {
         let { data } = user;
         data.push(modal);
+        alert("are you sure you want o add the details in table")
         console.log("data", data);
         setUser({ ...user, modal: modal, data: data })
         handleClose();
