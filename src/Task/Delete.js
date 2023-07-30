@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Col, Form, InputGroup, Modal, Row, Table } from 'react-bootstrap'
+import { Button, Table } from 'react-bootstrap'
 
 
 const Delete = () => {
@@ -30,43 +30,10 @@ const Delete = () => {
         ]
     })
 
-    const [modal, setModal] = useState({
-        index:-1,
-        first_name: '',
-        last_name: '',
-        email: '',
-        phone: '',
-    })
-    const [isAdd, setIsAdd] = useState(false)
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = (index) => {
-        const clickedUser = user.data[index];
-        setModal({ ...clickedUser,index });
-        setShow(true);
-      };
     
-      const handleSave = () => {
-        const { data } = user;
-        const editedData = data.map((item, index) => {
-          if (index === modal.index) {
-            return { ...modal };
-          }
-          return item;
-        });
-        console.log("item",editedData); 
-        setUser({ ...user, data: editedData });
-        handleClose();
-      };
-
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setModal({ ...modal, [name]: value });
-    };
 
     const handleEdit=()=>console.log("i am Edited");
     const handleDelete = (index) => {
-        const {data} = user;
         const newData = [...user.data];
         newData.splice(index, 1);
         alert(" are you sure you want to delete the user");
@@ -110,116 +77,7 @@ const Delete = () => {
 
                     </tbody>
                 </Table>
-                <div>
-
-                    <Modal show={show} onHide={handleClose}>
-
-                        <Modal.Header closeButton>
-                            <Modal.Title> Edit User</Modal.Title>
-                            {/* <Modal.Title>{isAdd ? AddUser : EditUser}</Modal.Title> */}
-                        </Modal.Header>
-                        {/* <Form noValidate validated={validated} > */}
-                        <Form>
-                            <Row className="mb-2 container">
-                                <Form.Group as={Col} md="12" controlId="validationCustom01">
-                                    <Form.Label>First name</Form.Label>
-                                    <Form.Control
-                                        required
-                                        type="text"
-                                        name="first_name"
-                                        placeholder="First name"
-                                        // value={statemodal.first_name} 
-                                        onChange={handleInputChange}
-                                        value={modal.first_name}
-                                    />
-                                    <Form.Control.Feedback type="invalid">
-                                        this filed is required*
-                                    </Form.Control.Feedback>
-                                    {/* {/ <Form.Control.Feedback>Looks good!</Form.Control.Feedback> /} */}
-                                </Form.Group>
-                                <Form.Group as={Col} md="12" controlId="validationCustom02">
-                                    <Form.Label>Last name</Form.Label>
-                                    <Form.Control
-                                        required
-                                        type="text"
-                                        name="last_name"
-                                        placeholder="Last name"
-                                        // value={statemodal.last_name} 
-                                        onChange={handleInputChange}
-                                        value={modal.last_name}
-                                    />
-                                    <Form.Control.Feedback type="invalid">
-                                        this filed is required*
-                                    </Form.Control.Feedback>
-                                    {/* {/ <Form.Control.Feedback>Looks good!</Form.Control.Feedback> /} */}
-                                </Form.Group>
-                                <Form.Group as={Col} md="12" controlId="validationCustomUsername">
-                                    <Form.Label>Email</Form.Label>
-                                    <InputGroup hasValidation>
-                                        {/* {/ <InputGroup.Text id="inputGroupPrepend"></InputGroup.Text> /} */}
-                                        <Form.Control
-                                            type="text"
-                                            name="email"
-                                            placeholder="name@example"
-                                            // aria-describedby="inputGroupPrepend"
-                                            required
-                                            // value={statemodal.email}
-                                            onChange={handleInputChange}
-                                            value={modal.email}
-                                        />
-                                        <Form.Control.Feedback type="invalid">
-                                            Please enter a valid email*
-                                        </Form.Control.Feedback>
-                                    </InputGroup>
-                                </Form.Group>
-                                <Form.Group as={Col} md="12" controlId="validationCustomUsername">
-                                    <Form.Label>Phone</Form.Label>
-                                    <InputGroup hasValidation>
-                                        {/* {/ <InputGroup.Text id="inputGroupPrepend"></InputGroup.Text> /} */}
-                                        <Form.Control
-                                            type="text"
-                                            name="number"
-                                            placeholder="123456795"
-                                            // aria-describedby="inputGroupPrepend"
-                                            required
-                                            // value={statemodal.email} 
-                                            onChange={handleInputChange}
-                                            value={modal.number}
-                                        />
-                                        <Form.Control.Feedback type="invalid">
-                                            Please enter a valid Phone*
-                                        </Form.Control.Feedback>
-                                    </InputGroup>
-                                </Form.Group>
-                                <Form.Group as={Col} md="12" controlId="validationCustomUsername">
-                                    <Form.Label>address</Form.Label>
-                                    <InputGroup hasValidation>
-                                        {/* {/ <InputGroup.Text id="inputGroupPrepend"></InputGroup.Text> /} */}
-                                        <Form.Control
-                                            type="text"
-                                            name="address"
-                                            placeholder="state"
-                                            // aria-describedby="inputGroupPrepend"
-                                            required
-                                            // value={statemodal.email} 
-                                            onChange={handleInputChange}
-                                            value={modal.address}
-                                        />
-                                        <Form.Control.Feedback type="invalid">
-                                            Please enter a valid address*
-                                        </Form.Control.Feedback>
-                                    </InputGroup>
-                                </Form.Group>
-
-                            </Row>
-                        </Form>
-
-                        <Modal.Footer>
-                            <Button variant="secondary" onClick={handleClose}> Close </Button>
-                            <Button variant="primary" onClick={handleSave}>Save changes</Button>
-                        </Modal.Footer>
-                    </Modal>
-                </div>
+                
             </div>
         </>
     )

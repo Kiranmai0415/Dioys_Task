@@ -31,13 +31,12 @@ const EditUser = () => {
     })
 
     const [modal, setModal] = useState({
-        index:-1,
+        // index:-1,
         first_name: '',
         last_name: '',
         email: '',
         phone: '',
     })
-    const [isAdd, setIsAdd] = useState(false)
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = (index) => {

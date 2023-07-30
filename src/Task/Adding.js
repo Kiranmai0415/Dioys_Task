@@ -36,19 +36,21 @@ const Add = () => {
         email: '',
         number: '',
     })
-    const [isAdd, setIsAdd] = useState(false)
+    // const [isAdd, setIsAdd] = useState(false) 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const handleShow = () => {
-        // setModal({ ...modal, first_name: '', last_name: '', email: '', phone: '', address: '' })
+    const handleShow = (index) => {
+        const clickedUser = user.data[index];
+        setModal({ ...clickedUser,index });
         setShow(true);
-    }
+      };
     const handleSave = () => {
         let { data } = user;
         data.push(modal);
         alert("are you sure you want o add the details in table")
         console.log("data", data);
         setUser({ ...user, modal: modal, data: data })
+        
         handleClose();
     }
 
@@ -122,7 +124,7 @@ const Add = () => {
                                     placeholder="First name"
                                     // value={statemodal.first_name} 
                                     onChange={handleInputChange}
-                                    value={user.first_name}
+                                    value={modal.first_name}
                                 />
                                 <Form.Control.Feedback type="invalid">
                                     this filed is required*
@@ -138,7 +140,7 @@ const Add = () => {
                                     placeholder="Last name"
                                     // value={statemodal.last_name} 
                                     onChange={handleInputChange}
-                                    value={user.last_name}
+                                    value={modal.last_name}
                                 />
                                 <Form.Control.Feedback type="invalid">
                                     this filed is required*
@@ -157,7 +159,7 @@ const Add = () => {
                                         required
                                         // value={statemodal.email}
                                         onChange={handleInputChange}
-                                        value={user.email}
+                                        value={modal.email}
                                     />
                                     <Form.Control.Feedback type="invalid">
                                         Please enter a valid email*
@@ -176,7 +178,7 @@ const Add = () => {
                                         required
                                         // value={statemodal.email} 
                                         onChange={handleInputChange}
-                                        value={user.number}
+                                        value={modal.number}
                                     />
                                     <Form.Control.Feedback type="invalid">
                                         Please enter a valid Phone*
@@ -195,7 +197,7 @@ const Add = () => {
                                         required
                                         // value={statemodal.email} 
                                         onChange={handleInputChange}
-                                        value={user.address}
+                                        value={modal.address}
                                     />
                                     <Form.Control.Feedback type="invalid">
                                         Please enter a valid address*
@@ -208,7 +210,7 @@ const Add = () => {
 
                     <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}> Close </Button>
-                        <Button variant="primary" onClick={handleSave}>Save changes</Button>
+                        <Button variant="primary" onClick={handleSave}>Save </Button>
                     </Modal.Footer>
                 </Modal>
 
