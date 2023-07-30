@@ -1,18 +1,40 @@
 import React, { useState } from 'react'
-import { Button, Col, Form, InputGroup, Modal, Row } from 'react-bootstrap'
+import { Button, Col, Form, InputGroup, Modal, Row, Table } from 'react-bootstrap'
 
 
-const AddUser = () => {
+const Add = () => {
 
     const [user, setUser] = useState({
-        data: []
+        data: [
+            {
+
+                first_name: "john",
+                last_name: "ubbani",
+                email: "johnubbani@gmailcom",
+                number: "1234567890"
+            },
+            {
+
+                first_name: "john",
+                last_name: "ubbani",
+                email: "johnubbani@gmailcom",
+                number: "1234567890"
+            },
+            {
+
+                first_name: "john",
+                last_name: "ubbani",
+                email: "johnubbani@gmailcom",
+                number: "1234567890"
+            },
+        ]
     })
 
     const [modal, setModal] = useState({
         first_name: '',
         last_name: '',
         email: '',
-        phone: '',
+        number: '',
     })
     const [isAdd, setIsAdd] = useState(false)
     const [show, setShow] = useState(false);
@@ -26,6 +48,7 @@ const AddUser = () => {
         data.push(modal);
         console.log("data", data);
         setUser({ ...user, modal: modal, data: data })
+        handleClose();
     }
 
 
@@ -34,20 +57,57 @@ const AddUser = () => {
         const { name, value } = e.target;
         setModal({ ...modal, [name]: value });
     };
+
+    const handleEdit=() => console.log("i am Edited in the table")
+    const handleDelete=() => console.log("i am Deleted in the table")
     return (
         <>
+            <div>
+                <Button variant="primary" onClick={handleShow} >ADD </Button>
+            </div>
+            <Table className="container" >
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        user.data.map((each, index) => {
+                            return (
+                                <tr key={index}>
+                                    <td>{index + 1}</td>
+                                    <td>{each.first_name}</td>
+                                    <td>{each.last_name}</td>
+                                    <td>{each.email}</td>
+                                    <td>{each.number}</td>
+                                    <td>
+
+                                        <Button variant="primary" onClick={handleEdit} >Edit </Button>
+                                        <Button onClick={handleDelete}>Delete</Button>
+                                    </td>
+                                </tr>
+                            );
+                        })
+                    }
+
+                </tbody>
+            </Table>
 
             <div>
-                <div>
-                    <Button variant="primary" onClick={handleShow} >Save changes</Button>
 
-                </div>
 
 
                 <Modal show={show} onHide={handleClose}>
 
                     <Modal.Header closeButton>
-                        <Modal.Title>Add</Modal.Title>
+                        <Modal.Title> Add User</Modal.Title>
+                        {/* <Modal.Title>{isAdd ? AddUser : EditUser}</Modal.Title> */}
                     </Modal.Header>
                     {/* <Form noValidate validated={validated} > */}
                     <Form>
@@ -156,4 +216,4 @@ const AddUser = () => {
     )
 }
 
-export default AddUser
+export default Add

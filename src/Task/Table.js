@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Table } from 'react-bootstrap';
-import AddUser from './Adding';
+import Edit from './Edit';
+import Add from './Adding';
+import EditUser from './Edit';
 
 function Tables() {
 
@@ -29,25 +31,22 @@ function Tables() {
             },
         ]
     })
-    const [modal, setModal] = useState({
-        first_name: '',
-        last_name: '',
-        email: '',
-        phone: '',
-    })
+
 
 
     useEffect(() => {
         console.log('Table Data:', user);
     }, [user]);
 
+ const handleAdd=() => console.log("i am Added into the table")
+ const handleEdit=() => console.log("i am Edited in the table")
+ const handleDelete=() => console.log("i am Deleted in the table")
 
 
     return (
         <>
             <div>
-
-                <AddUser />
+                <Button onClick={handleAdd}>Add</Button>
                 <Table className="container" >
                     <thead>
                         <tr>
@@ -70,9 +69,8 @@ function Tables() {
                                         <td>{each.email}</td>
                                         <td>{each.phone}</td>
                                         <td>
-                                            {/* <Button onClick={() => editUser(each)}>Edit</Button>{""} */}
-                                            {/* <EditUser /> */}
-                                            <Button>Delete</Button>
+                                            <Button onClick={handleEdit}>Edit</Button>
+                                            <Button onClick={handleDelete}>Delete</Button>
                                         </td>
                                     </tr>
                                 );
