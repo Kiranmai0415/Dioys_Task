@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Table } from 'react-bootstrap';
-import Edit from './Edit';
-import Add from './Adding';
-import EditUser from './Edit';
+
 
 function Tables() {
 
@@ -79,6 +77,7 @@ function Tables() {
 
                     </tbody>
                 </Table>
+                <Button href='/dashboard' >Back to Dashboard</Button>
             </div></>
     );
 } export default Tables

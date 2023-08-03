@@ -77,7 +77,7 @@ const Delete = () => {
 
                     </tbody>
                 </Table>
-                
+                <Button href='/dashboard' >Back to Dashboard</Button>
             </div>
         </>
     )

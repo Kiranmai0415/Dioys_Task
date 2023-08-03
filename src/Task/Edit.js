@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, Col, Form, InputGroup, Modal, Row, Table } from 'react-bootstrap'
 
 
-const EditUser = () => {
+const Edit = () => {
 
     const [user, setUser] = useState({
         data: [
@@ -100,6 +100,7 @@ const EditUser = () => {
 
                     </tbody>
                 </Table>
+                <Button href='/dashboard' >Back to Dashboard</Button>
                 <div>
 
                     <Modal show={show} onHide={handleClose}>
@@ -215,4 +216,4 @@ const EditUser = () => {
     )
 }
 
-export default EditUser
+export default Edit
