@@ -9,6 +9,8 @@ import Delete from '../Task/Delete';
 import Dashboard from '../Task/Dashboard';
 import Login from '../Task/Login';
 import TableSet from '../Redux/Components/TableSet';
+// import AddEdit from '../Basic Redux/AddEdit';
+import AddTable from '../complete redux/Basic/AddTable';
 
 
 function Routing() {
@@ -24,6 +26,8 @@ function Routing() {
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/tables' element={<TableSet/>}/>
+                    {/* <Route path='/addedit' element={<AddEdit/>}/> */}
+                    <Route path='/addtable' element={<AddTable/>}/>
 
                 </Routes>
             </BrowserRouter>
