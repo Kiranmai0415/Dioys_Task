@@ -11,6 +11,8 @@ import Login from '../Task/Login';
 import TableSet from '../Redux/Components/TableSet';
 // import AddEdit from '../Basic Redux/AddEdit';
 import AddTable from '../complete redux/Basic/AddTable';
+import EditRedux from '../complete redux/Basic/EditRedux';
+import AddRedux from '../complete redux/Basic/AddRedux';
 
 
 function Routing() {
@@ -27,6 +29,8 @@ function Routing() {
                     <Route path='/login' element={<Login />} />
                     <Route path='/tables' element={<TableSet/>}/>
                     {/* <Route path='/addedit' element={<AddEdit/>}/> */}
+                    <Route path='/addredux' element={<AddRedux/>}/>
+                    <Route path='/editredux' element={<EditRedux/>}/>
                     <Route path='/addtable' element={<AddTable/>}/>
 
                 </Routes>
