@@ -1,136 +1,217 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import React, { useState } from 'react';
+import { Button, Table } from 'react-bootstrap';
 
 function Search() {
-
     const [state, setState] = useState({
-        text: '',
-        list: []
+        users: [
+
+            {
+                // id: '1',
+                name: "rahul",
+                email: "rahul@gmail.com",
+                number: 1234567890,
+                designation: 'UI developer',
+                reporting: 'Katehunston'
+
+            },
+            {
+                // id: '2',
+                name: "rajshekar",
+                email: "rajshekar@gmail.com",
+                number: 1234567890,
+                designation: 'UI developer',
+                reporting: 'Katehunston'
+
+            },
+            {
+                // id: '3',
+                name: "charan",
+                email: "charan@gmail.com",
+                number: 1234567890,
+                designation: 'UI developer',
+                reporting: 'Katehunston'
+
+            },
+            {
+                // id: '4',
+                name: "satish",
+                email: "satish@gmail.com",
+                number: 1234567890,
+                designation: 'UI developer',
+                reporting: 'Katehunston'
+
+            },
+            {
+                // id: '5',
+                name: "vinay",
+                email: "vinay@gmail.com",
+                number: 1234567890,
+                designation: 'UI developer',
+                reporting: 'Katehunston'
+
+            },
+            {
+                // id: '6',
+                name: "dharanesh",
+                email: "dharanesh@gmail.com",
+                number: 1234567890,
+                designation: 'UI developer',
+                reporting: 'Katehunston'
+
+            },
+            {
+                // id: '7',
+                name: "venky",
+                email: "venky@gmail.com",
+                number: 1234567890,
+                designation: 'UI developer',
+                reporting: 'Katehunston'
+
+            },
+            {
+                // id: '8',
+                name: "shankar",
+                email: "shankar@gmail.com",
+                number: 1234567890,
+                designation: 'UI developer',
+                reporting: 'Katehunston'
+
+            },
+            {
+                // id: '9',
+                name: "indraja",
+                email: "indraja@gmail.com",
+                number: 1234567890,
+                designation: 'UI developer',
+                reporting: 'Katehunston'
+
+            },
+            {
+                // id: '10',
+                name: "padmaja",
+                email: "padmaja@gmail.com",
+                number: 1234567890,
+                designation: 'UI developer',
+                reporting: 'Katehunston'
+
+            },
+            {
+                // id: '11',
+                name: "kalyani",
+                email: "kalyani@gmail.com",
+                number: 1234567890,
+                designation: 'UI developer',
+                reporting: 'Katehunston'
+
+            },
+            {
+                // id: '12',
+                name: "ruthvika",
+                email: "ruthvika@gmail.com",
+                number: 1234567890,
+                designation: 'UI developer',
+                reporting: 'Katehunston'
+
+            },
+            {
+                // id: '13',
+                name: "kiranmai",
+                email: "kiranmai@gmail.com",
+                number: 1234567890,
+                designation: 'UI developer',
+                reporting: 'Katehunston'
+
+            },
+            {
+                // id: '14',
+                name: "vijetha",
+                email: "vijetha@gmail.com",
+                number: 1234567890,
+                designation: 'UI developer',
+                reporting: 'Katehunston'
+
+            },
+            {
+                // id: '15',
+                name: "lokesh",
+                email: "lokesh@gmail.com",
+                number: 1234567890,
+                designation: 'UI developer',
+                reporting: 'Katehunston'
+
+            },
+           
+        ]
     })
-    const [usersdata, setUsersdata] = useState(
-        {
-            data: [],
 
-        }
-    )
-    useEffect(() => {
-
-        axios.get('https://reqres.in/api/users?page=1')
-            .then(function (response) {
-                console.log(response);
-                setUsersdata(response.data)
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-    }, [])
+    const [searchUser, setSearchUser] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
 
 
-    const handleOntable = (e) => {
-        setState({ ...state, [e.target.name]: e.target.value })
+    const handleEdit = () => console.log('edited');
+    const handleDelete = () => console.log('deleted');
+    const handleSearch = () => {
+        const searchResults = state.users.filter(item => item.name.toLowerCase().includes(searchUser.toLowerCase()));
+        console.log("searchResults : ", searchResults)
     }
-    console.log("result", state.text)
-
-    const { list, text } = state;
-    const InputSubmit = (e) => {
-        e.preventDefault();
-        list.push(text)
-        // console.log("list", list)
-        setState({ ...state, list: list, text: "" })
-
-    }
-    // const handleSearch = e => {
-    //     var data, filter, ul, li, a, i, txtValue;
-    //     data = document.getElementById("list");
-    //     filter = list.value.toUpperCase();
-    //     for (i = 0; i < data.length; i++) {
-    //         a = data[i].getElementByName("a")[0];
-    //         txtValue = a.textContent || a.innerText;
-    //         if (txtValue.toUpperCase().indexOf(filter) > -1) {
-    //             data[i].style.display = "";
-    //         } else {
-    //             data[i].style.display = "none";
-    //         }
-    //     }
-    // }
-    
-    const [show, setShow] = useState(false);
-    const editUser = (user) => {
-        console.log("user", user);
-        // setAddModal(user);
-        setShow(true)
-        // setIsAdd(false)
-    }
-    const { data } = usersdata
-    const deletedata = (user) => {
-        setDeleted(true)
-        setDeleteuser(user)
-    }
-
-    const [Deleteuser, setDeleteuser] = useState({})
-    const [deleted, setDeleted] = useState(false);
-    const handleClosedelete = () => setDeleted(false);
-    const deleteFn = () => {
-        const getIndex = data.indexOf(Deleteuser);
-        data.splice(getIndex, 1)
-        console.log("newdata", data);
-        setUsersdata({ ...usersdata, data: data });
-        handleClosedelete();
-    }
-
-
+    const filteredUsers = searchUser === '' ? state.users : state.users.filter(user =>
+        user.name.toLowerCase().includes(searchUser.toLowerCase())
+    );
 
     return (
-        <div className="container">
-
-            <form onSubmit={InputSubmit}>
-                <label>Textfield:</label>
-                <input type="text" name="text" value={state.text} onChange={handleOntable}></input>
-                <input type="submit" value="Submit" className="btn-btn-success"></input>
-
+        <>
+            <input
+                type="text"
+                placeholder="Search by name"
+                value={searchUser}
+                onChange={(e) => setSearchUser(e.target.value)} />
+            <Button onClick={handleSearch} >Search</Button>
+            {/* <ul>
                 {
-                    state.list.length > 0 ?
-                        <div>
-                            <table>
-                                <thead>
-                                    <th>ID</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Profile pic</th>
-                                    <th>Email</th>
-                                    <th>Actions</th>
-                                </thead>
-                                <tbody>
-                                    {
-                                        state.list.length > 0 &&
-                                        state.list.map((each, index) => {
-                                            return (
-                                                <tr key={index}>
-                                                    <td>{index + 1}</td>
-                                                    <td>{each.first_name}</td>
-                                                    <td>{each.last_name}</td>
-                                                    <td><img className="rounded-circle text-center" src={each.avatar} alt="avatar" height="50" width="50" /></td>
-                                                    <td>{each.email}</td>
-                                                    <td>
-                                                        <Button variant="primary m-2" onClick={() => editUser(each)}>Edit</Button>
-                                                        <Button variant="danger" onClick={() => deletedata(each)}>Delete</Button>
-                                                    </td>
-                                                </tr>
-
-                                            )
-                                        })
-                                    }
-
-                                </tbody>
-
-                            </table>
-                        </div>
-                        : null
+                    searchResults.map((item, index) => (
+                        <li key={index}>
+                            {item.name} - {item.email} - {item.designation} - {item.reporting}
+                        </li>
+                    ))
                 }
-            </form >
+            </ul> */}
 
-        </div >
+            <Table className="container" >
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name </th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Designation</th>
+                        <th>Reporting</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        filteredUsers.map((each, index) => {
+                            return (
+                                <tr key={index}>
+                                    <td>{index + 1}</td>
+                                    <td>{each.name}</td>
+                                    <td>{each.email}</td>
+                                    <td>{each.number}</td>
+                                    <td>{each.designation}</td>
+                                    <td>{each.reporting}</td>
+                                    <td>
+
+                                        <Button variant="primary" onClick={handleEdit} >Edit </Button>
+                                        <Button onClick={handleDelete}>Delete</Button>
+                                    </td>
+                                </tr>
+                            );
+                        })
+                    }
+
+                </tbody>
+            </Table>
+        </>
     );
 }
 export default Search;
