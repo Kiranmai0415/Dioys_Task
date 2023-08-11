@@ -58,7 +58,7 @@ const AddRedux = () => {
         <Form>
           <Row className="mb-2 container">
             <Form.Group as={Col} md="12" controlId="validationCustom01">
-              <Form.Label>First name</Form.Label>
+              <Form.Label>name</Form.Label>
               <Form.Control
 
                 type="text"

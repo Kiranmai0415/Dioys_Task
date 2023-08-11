@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Table } from 'react-bootstrap';
+import Search1 from './Search1';
 
 
 function Tables() {
@@ -11,21 +12,28 @@ function Tables() {
                 first_name: "john",
                 last_name: "ubbani",
                 email: "johnubbani@gmailcom",
-                phone: "1234567890"
+                number: "1234567890"
             },
             {
 
-                first_name: "john",
+                first_name: "kiranmai",
                 last_name: "ubbani",
-                email: "johnubbani@gmailcom",
-                phone: "1234567890"
+                email: "kiranmaiubbani@gmailcom",
+                number: "1234567890"
             },
             {
 
-                first_name: "john",
+                first_name: "kranthi",
                 last_name: "ubbani",
-                email: "johnubbani@gmailcom",
-                phone: "1234567890"
+                email: "kranthiubbani@gmailcom",
+                number: "1234567890"
+            },
+            {
+
+                first_name: "shanthi",
+                last_name: "ubbani",
+                email: "shanthiubbani@gmailcom",
+                number: "1234567890"
             },
         ]
     })
@@ -40,9 +48,14 @@ function Tables() {
  const handleEdit=() => console.log("i am Edited in the table")
  const handleDelete=() => console.log("i am Deleted in the table")
 
+ const [searchResult, setSearchResult] = useState([]);
+ const handleSearch = (Result)=>{
+    setSearchResult(Result);
+ }
 
     return (
         <>
+        <Search1 users={user.data} onSearch={handleSearch}/>
             <div>
                 <Button onClick={handleAdd}>Add</Button>
                 <Table className="container" >
@@ -58,7 +71,7 @@ function Tables() {
                     </thead>
                     <tbody>
                         {
-                            user.data.map((each, index) => {
+                            (searchResult.length>0 ? searchResult : user.data).map((each, index) => {
                                 return (
                                     <tr key={index}>
                                         <td>{index + 1}</td>

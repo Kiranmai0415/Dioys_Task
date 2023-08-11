@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Col, Form, InputGroup, Modal, Row, Table } from 'react-bootstrap'
+import Search1 from './Search1'
 
 
 const Add = () => {
@@ -15,16 +16,23 @@ const Add = () => {
             },
             {
 
-                first_name: "john",
+                first_name: "kiranmai",
                 last_name: "ubbani",
-                email: "johnubbani@gmailcom",
+                email: "kiranmaiubbani@gmailcom",
                 number: "1234567890"
             },
             {
 
-                first_name: "john",
+                first_name: "kranthi",
                 last_name: "ubbani",
-                email: "johnubbani@gmailcom",
+                email: "kranthiubbani@gmailcom",
+                number: "1234567890"
+            },
+            {
+
+                first_name: "shanthi",
+                last_name: "ubbani",
+                email: "shanthiubbani@gmailcom",
                 number: "1234567890"
             },
         ]
@@ -39,17 +47,18 @@ const Add = () => {
     // const [isAdd, setIsAdd] = useState(false) 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const handleShow = (index) => {
-        const clickedUser = user.data[index];
-        setModal({ ...clickedUser,index });
-        setShow(true);
-      };
+    const handleShow = ()=>setShow(true)
+    // const handleShow = (index) => {
+    //     const clickedUser = user.data[index];
+    //     setModal({ ...clickedUser,index });
+    //     setShow(true);
+    //   };
     const handleSave = () => {
         let { data } = user;
         data.push(modal);
         alert("are you sure you want o add the details in table")
         console.log("data", data);
-        setUser({ ...user, modal: modal, data: data })
+        setUser({ ...user,  data: data })
         
         handleClose();
     }
@@ -61,10 +70,18 @@ const Add = () => {
         setModal({ ...modal, [name]: value });
     };
 
+    // Search Functionality
+    const [searchResult, setSearchResult] = useState([]);
+    const handleSearch = (Result)=>{
+        setSearchResult(Result);
+
+    }
+
     const handleEdit=() => console.log("i am Edited in the table")
     const handleDelete=() => console.log("i am Deleted in the table")
     return (
         <>
+        <Search1 users= {user.data} onSearch= {handleSearch}/>
             <div>
                 <Button variant="primary" onClick={handleShow} >ADD </Button>
             </div>
@@ -81,7 +98,7 @@ const Add = () => {
                 </thead>
                 <tbody>
                     {
-                        user.data.map((each, index) => {
+                      (searchResult.length > 0 ? searchResult : user.data).map((each, index) => {
                             return (
                                 <tr key={index}>
                                     <td>{index + 1}</td>

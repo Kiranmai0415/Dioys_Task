@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button, Table, Modal, Form, Col, Row, InputGroup } from "react-bootstrap";
-import Search from "./Search";
+// import Search from "./Search";
 
 const TableData = () => {
 
@@ -140,7 +140,7 @@ const TableData = () => {
     return (
         <div className="container">
             <Button variant="success m-2" onClick={handleShow} className="btn">Add Users</Button>
-            <Search/>
+            {/* <Search/> */}
             <Table striped bordered hover>
                 <thead className="text-center">
                     <tr>

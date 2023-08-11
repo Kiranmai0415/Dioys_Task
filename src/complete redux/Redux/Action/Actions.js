@@ -25,4 +25,10 @@ export const deletingUser = (userId) => {
         },
     };
 };
+export const SearchingUser = (Result) => {
+    return {
+        type: 'Search_User',
+        payload: Result,
+    }
+}
 

@@ -4,12 +4,14 @@ import { Button, Table } from 'react-bootstrap'
 import AddRedux from './AddRedux'
 import EditRedux from './EditRedux'
 import { deletingUser } from '../Redux/Action/Actions'
+import Search from '../Basic/Search';
 
 const AddTable = () => {
 
     const dispatch = useDispatch();
     const users = useSelector((state) => state.users.users);
     const [selectedUserIndex, setSelectedUserIndex] = useState(null);
+    const [searchResult, setSearchResult] = useState([]);
 
     const handleEditModal = (userIndex) => {
         setSelectedUserIndex(userIndex);
@@ -19,15 +21,21 @@ const AddTable = () => {
         setSelectedUserIndex(null);
     };
 
-  
+
     const handleDelete = (userId) => {
         dispatch(deletingUser(userId));
         alert("Are you sure you want to delete the user?");
         setSelectedUserIndex(null);
     };
-    
+    const searchResults = useSelector((state) => state.users.searchResults)
+    const handleSearch = (Result) => {
+        setSearchResult(Result);
+    }
+
     return (
         <div>
+            <Search users={users} onSearch={handleSearch}  />
+            
             <AddRedux />
             <Table className='container'>
                 <thead>
@@ -39,13 +47,13 @@ const AddTable = () => {
                         <th>designation </th>
                         <th>Reporting </th>
                         <th>Actions </th>
-                        
+
 
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        users.map((user, index) => {
+                       ( searchResults.length > 0 ? searchResults : users).map((user, index) => {
                             return (
                                 <tr key={user.id}>
                                     {/* <td>{index + 1}</td> */}
@@ -57,12 +65,12 @@ const AddTable = () => {
                                     <td>{user.reporting}</td>
                                     <td>
                                         <Button
-                                       className="btn btn-primary"
+                                            className="btn btn-primary"
                                             onClick={() => handleEditModal(index)}
                                         >
                                             Edit
                                         </Button>
-                                        <Button onClick={()=>handleDelete(index)} className='btn btn-danger'>Delete</Button>
+                                        <Button onClick={() => handleDelete(index)} className='btn btn-danger'>Delete</Button>
                                     </td>
                                 </tr>
                             );
