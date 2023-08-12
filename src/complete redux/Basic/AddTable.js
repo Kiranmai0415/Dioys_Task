@@ -4,7 +4,7 @@ import { Button, Table } from 'react-bootstrap'
 import AddRedux from './AddRedux'
 import EditRedux from './EditRedux'
 import { deletingUser } from '../Redux/Action/Actions'
-import Search from '../Basic/Search';
+import Search from '../Shared/Search';
 
 const AddTable = () => {
 

@@ -1,0 +1,16 @@
+.error {
+    border: 1px solid red;
+    padding: 4px;
+    margin-top: 4px;
+}
+
+.icons {
+    position: absolute;
+    margin-left: 155px;
+}
+
+
+.error-message {
+    color: red;
+    font-size: 14px;
+}
