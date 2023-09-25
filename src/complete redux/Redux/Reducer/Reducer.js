@@ -1,7 +1,9 @@
-import { ADD_USER, EDIT_USER, DELETE_USER, Search_User } from '../Action/Actions';
+import { ADD_USER, EDIT_USER, DELETE_USER, Search_User, Pagination } from '../Action/Actions';
 
 const initialState = {
     searchResults: [],
+    currentPage: 1,
+    postPage: 3,
     users: [
 
         {
@@ -139,7 +141,7 @@ const initialState = {
             reporting: 'Katehunston'
 
         },
-       
+
     ]
 
 };
@@ -168,6 +170,19 @@ const Reducer = (state = initialState, action) => {
 
         case 'Search_User':
             return { ...state, searchResults: action.payload }
+
+        case 'Set_Current_Page':
+            return {
+                ...state,
+                currentPage: action.payload,
+            }
+
+        case 'Set_Post_Page':
+            return {
+                ...state,
+                postPage: action.payload,
+                currentPage: 1,
+            }
 
 
         default:

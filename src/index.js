@@ -4,16 +4,27 @@ import './index.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Routing from './Routing/routing';
+import { Provider } from 'react-redux';
+import Store from './Redux/Store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <Routing/>
-    
-  </React.StrictMode>
+  // <React.StrictMode>
+  //   <Routing/>
+  // </React.StrictMode>
+  <Provider store={Store}>
+    <Routing />
+  </Provider>,
 );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+
+
+
+
+
+

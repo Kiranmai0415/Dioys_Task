@@ -5,6 +5,7 @@ import AddRedux from './AddRedux'
 import EditRedux from './EditRedux'
 import { deletingUser } from '../Redux/Action/Actions'
 import Search from '../Shared/Search';
+import Pages from '../Redux/Reducer/Pagination_Reducer'
 
 const AddTable = () => {
 
@@ -32,10 +33,11 @@ const AddTable = () => {
         setSearchResult(Result);
     }
 
+   
     return (
         <div>
-            <Search users={users} onSearch={handleSearch}  />
-            
+            <Search users={users} onSearch={handleSearch} />
+
             <AddRedux />
             <Table className='container'>
                 <thead>
@@ -53,7 +55,7 @@ const AddTable = () => {
                 </thead>
                 <tbody>
                     {
-                       ( searchResults.length > 0 ? searchResults : users).map((user, index) => {
+                        (searchResults.length > 0 ? searchResults : users).map((user, index) => {
                             return (
                                 <tr key={user.id}>
                                     {/* <td>{index + 1}</td> */}
@@ -82,6 +84,8 @@ const AddTable = () => {
             {selectedUserIndex !== null && (
                 <EditRedux userIndex={selectedUserIndex} handleClose={handleClose} />
             )}
+
+            <Pages />
 
         </div>
     )

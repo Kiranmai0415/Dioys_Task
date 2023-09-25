@@ -1,6 +1,8 @@
 export const ADD_USER = 'Add_User';
 export const EDIT_USER = 'Edit_User';
 export const DELETE_USER = 'Delete_User';
+export const SET_CURRENT_PAGE = 'Set_Current_Page';
+export const SET_POST_PAGE = 'Set_Post_Page';
 
 export const addingUser = (user) => {
     return {
@@ -31,4 +33,18 @@ export const SearchingUser = (Result) => {
         payload: Result,
     }
 }
+
+export const setCurrentPage = (currentPage) => {
+    return {
+        type: 'Set_Current_Page',
+        payload: currentPage,
+    };
+};
+
+export const setPostPage = (postPage) => {
+    return {
+        type: 'Set_Post_Page',
+        payload: postPage,
+    };
+};
 
